@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+}
+
+header {
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between; 
+    text-transform: uppercase;
+}
+
+nav li {
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+nav li:last-child {
+    margin-right: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000000;
+}
+
+nav a:hover {
+    color: #aeaeae;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-top: 20px;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Add margin-bottom for spacing between elements */
+    display: block; /* Change display property to block */
+}
+
+/* Additional styles for the dropdown menus */
+#company-select, #product-type-select, #production-year-select {
+    width: 200px; /* Adjust width as needed */
+    margin-right: 10px; /* Add margin-right for spacing between elements */
+    float: left; /* Align select elements to the left */
+}
