@@ -4,9 +4,10 @@
         <title>Plastic-Based Textiles</title>
         <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="reset.css" rel="stylesheet">
+        <link href="/reset.css" rel="stylesheet">
         <link href="enter.css" rel="stylesheet">
-        <script defer src="script.js"></script>
+        <script defer src="main.js"></script>
+        <script defer src="form-state.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     </head>
@@ -23,7 +24,7 @@
             </nav>
         </header>
 
-        <main>
+        <form>
             <section>
                 <select id="company-select">
                     <option value="all">All Companies</option>
@@ -31,6 +32,21 @@
                     <option value="company2">Company 2</option>
                     <!-- Add all companies -->
                 </select>
+            </section>
+
+                <section>
+                    <label for="some-option">And a dropdown <code>&lt;select&gt;</code>:</label>
+                    <select id="some-option" name="some-option">
+                            <option>With options</option>
+                            <option>Inside here</option>
+                            <option>To select</option>
+                            <optgroup label="Grouped">
+                                    <option>You can organize</option>
+                                    <option>Options in groups</option>
+                            </optgroup>
+                    </select>
+                </section>
+
                 <select id="product-type-select">
                     <option value="all">All Product Types</option>
                     <option value="type1">Product Type 1</option>
@@ -45,7 +61,7 @@
                 </select>
             </section>
             <canvas id="greenhouse-gas-chart" width="400" height="200"></canvas>
-        </main>
+        </form>
         
     </body>
     </html>
