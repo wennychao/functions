@@ -1,24 +1,70 @@
 body {
-    margin: 0;
-    padding: 0;
+    --spacing: 2em;
+
+	display: grid;
+	gap: var(--spacing);
+	margin: initial;
+	padding: var(--spacing);
     font-family: Arial, sans-serif;
     background-color: black;
 }
 
+form {
+	/* background-color: whitesmoke; */
+	display: grid;
+    position: fixed; /* Position the form */
+    top: 50%; /* Place it 50% from the top */
+    left: 50px; /* Offset it 50px from the left */
+    transform: translateY(-50%);
+}
+
+section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+select {
+    width: 240px;
+    padding: 10px;
+    font-size: 16px;
+    color: whitesmoke;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    display: block; /* Change display property to block */
+}
+
+option {
+    color: whitesmoke;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the options on hover */
+option:hover {
+    background-color: #333; /* Example hover color */
+}
+/* Additional styles for the dropdown menus */
+#company-select, #product-type-select, #production-year-select {
+    width: 240px; /* Adjust width as needed */
+}
+
+/* 
 header {
     padding: 20px;
     background-color: rgb(255, 255, 255);
-}
+} */
 
-nav ul {
+/* nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: space-between; 
     text-transform: uppercase;
-}
-
+} */
+/* 
 nav li {
     margin-right: 20px;
     font-size: 16px;
@@ -26,8 +72,8 @@ nav li {
 
 nav li:last-child {
     margin-right: 0;
-}
-
+} */
+/* 
 nav a {
     text-decoration: none;
     color: #000000;
@@ -35,28 +81,9 @@ nav a {
 
 nav a:hover {
     color: #aeaeae;
-}
+} */
 
-main {
+/* main {
     padding: 20px;
-}
+} */
 
-section {
-    margin-top: 20px;
-}
-
-select {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px; /* Add margin-bottom for spacing between elements */
-    display: block; /* Change display property to block */
-}
-
-/* Additional styles for the dropdown menus */
-#company-select, #product-type-select, #production-year-select {
-    width: 200px; /* Adjust width as needed */
-    margin-right: 10px; /* Add margin-right for spacing between elements */
-    float: left; /* Align select elements to the left */
-}

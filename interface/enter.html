@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Plastic-Based Textiles</title>
+        <title>Catwalk to Catastrophe</title>
         <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/reset.css" rel="stylesheet">
         <link href="enter.css" rel="stylesheet">
         <script defer src="main.js"></script>
         <script defer src="form-state.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     </head>
     <body>
+        <!-- Navigation menu
         <header>
-            <!-- Navigation menu -->
             <nav>
                 <ul>
                     <li><a href="#introduction">Introduction</a></li>
@@ -22,45 +21,38 @@
                     <li><a href="#read-more">Read More</a></li>
                 </ul>
             </nav>
-        </header>
+        </header> -->
 
         <form>
             <section>
-                <select id="company-select">
-                    <option value="all">All Companies</option>
-                    <option value="company1">Company 1</option>
-                    <option value="company2">Company 2</option>
-                    <!-- Add all companies -->
-                </select>
-            </section>
-
-                <section>
-                    <label for="some-option">And a dropdown <code>&lt;select&gt;</code>:</label>
-                    <select id="some-option" name="some-option">
-                            <option>With options</option>
-                            <option>Inside here</option>
-                            <option>To select</option>
-                            <optgroup label="Grouped">
-                                    <option>You can organize</option>
-                                    <option>Options in groups</option>
-                            </optgroup>
+                <label for="company-select"></label>
+                    <select id="company-select" name="company-select">
+                        <option value="all">Select Companies &#9660;</option>
+                        <option value="company1">Company 1</option>
+                        <option value="company2">Company 2</option>
+                        <!-- Add all companies -->
                     </select>
-                </section>
-
-                <select id="product-type-select">
-                    <option value="all">All Product Types</option>
-                    <option value="type1">Product Type 1</option>
-                    <option value="type2">Product Type 2</option>
-                    <!-- Add all product types -->
-                </select>
-                <select id="production-year-select">
-                    <option value="all">All Production Years</option>
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <!-- Add all production years -->
-                </select>
             </section>
-            <canvas id="greenhouse-gas-chart" width="400" height="200"></canvas>
+
+            <section>
+                <label for="product-type-select"></label>
+                    <select id="product-type-select" name="product-type-select">
+                        <option value="all">Select Product Types &#9660;</option>
+                        <option value="type1">Product Type 1</option>
+                        <option value="type2">Product Type 2</option>
+                    </select>
+            </section>
+
+            <section>
+                <label for="production-year-select"></label>
+                    <select id="production-year-select" name="production-year-select">
+                        <option value="all">Select Production Years &#9660;</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+            </section>
+
+            <!-- <canvas id="greenhouse-gas-chart" width="400" height="200"></canvas> -->
         </form>
         
     </body>

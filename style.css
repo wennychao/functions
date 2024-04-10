@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&family=Oranienbaum&display=swap');
+
 body {
     margin: 0;
     padding: 0;
@@ -9,41 +11,61 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh; /* Set the height of the body to viewport height */
-}
-header {
-    color: #fff;
-    padding: 20px 0;
+    background-image: url('f7.jpeg');
+    background-size: cover; /* Cover the entire container */
+    background-position:0% 60%; /* Center the background image */
+    background-repeat: no-repeat;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+header {
+    padding: 20px 0;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-family: "Imbue", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 10rem;
+    margin-top: 2rem;
+    color: #d80505;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.211);
+}
+
+h2 {
+    width: 700px;
+    margin: auto;
+    font-weight: 400;
+    color: whitesmoke;
 }
 
 .enter-button {
     padding: 16px 24px;
-    background-color: #ffffff;
-    color: #000000;
-    border: none;
-    border-radius: 5px;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
+    border-radius: 100px;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-transform: uppercase;
-    margin-top: 1rem;
+    margin-top: 2rem;
     text-decoration: none; /* Remove underline for anchor links */
     display: inline-block; /* Ensure button is displayed inline */
 }
 
 .enter-button:hover {
-    background-color: #555;
+    background-color: #cd0000;
     color: #ffffff;
+    box-shadow: 4px 4px 4px black;
 }
 
 
 footer {
-    color: #fff;
+    color: #a1a1a1;
     padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 footer p {
