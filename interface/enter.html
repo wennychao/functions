@@ -8,7 +8,6 @@
         <link href="enter.css" rel="stylesheet">
         <script defer src="main.js"></script>
         <script defer src="form-state.js"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
     </head>
     <body>
         <!-- Navigation menu
@@ -25,35 +24,42 @@
 
         <form>
             <section>
-                <label for="company-select"></label>
+                <div class="select-wrapper">
+                    <label for="company-select">Brand</label>
                     <select id="company-select" name="company-select">
-                        <option value="all">Select Companies &#9660;</option>
-                        <option value="company1">Company 1</option>
-                        <option value="company2">Company 2</option>
-                        <!-- Add all companies -->
+                        <option value="all">Brand</option>
                     </select>
-            </section>
+                    <div class="chevron">&#9660;</div>
+                </div>
+              </section>
 
             <section>
-                <label for="product-type-select"></label>
+                <div class="select-wrapper">
+                    <label for="product-type-select"></label>
                     <select id="product-type-select" name="product-type-select">
-                        <option value="all">Select Product Types &#9660;</option>
-                        <option value="type1">Product Type 1</option>
-                        <option value="type2">Product Type 2</option>
+                        <option value="all">Textile Type
                     </select>
+                    <div class="chevron">&#9660;</div>
+                </div>
             </section>
 
             <section>
-                <label for="production-year-select"></label>
+                <div class="select-wrapper">
+                    <label for="production-year-select"></label>
                     <select id="production-year-select" name="production-year-select">
-                        <option value="all">Select Production Years &#9660;</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
+                        <option value="all">Production Year</option>
                     </select>
+                    <div class="chevron">&#9660;</div>
+                </div>
             </section>
-
-            <!-- <canvas id="greenhouse-gas-chart" width="400" height="200"></canvas> -->
         </form>
-        
+        <div class="chart-container">
+            <div class="metric">
+              <div class="title">Symbol</div>
+              <div class="title">Type</div>
+              <div class="title">Quantity</div>
+              <div class="title">Unit</div>
+            </div>
+        </div>
     </body>
     </html>

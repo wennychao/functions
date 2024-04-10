@@ -3,16 +3,6 @@ window.stateCallback = () => {
 	console.log('Something changed!')
 }
 
-fetch('Plastic_based_Textiles.json')
-  .then(response => response.json())
-  .then(data => {
-    // Work with the JSON data here
-    console.log(data);
-  })
-  .catch(error => console.error('Error fetching data:', error));
-
-
-
 //   // Data for greenhouse gas emissions
 // const data = {
 //     labels: ['Company A', 'Company B', 'Company C', 'Company D'],

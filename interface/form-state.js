@@ -1,81 +1,81 @@
-// Find your form
-const formElement = document.querySelector('form')
+fetch('Plastic_based_Textiles.json')
+  .then(response => response.json())
+  .then(data => {
 
+	// Extract unique company names
+    const uniqueCompanies = [...new Set(data.map(item => item.Company))];
 
+    // Populate select options dynamically
+    const companySelect = document.getElementById("company-select");
+    uniqueCompanies.forEach(company => {
+      const option = document.createElement("option");
+      option.value = company;
+      option.textContent = company;
+      companySelect.appendChild(option);
+    });
 
-// Function to match the form to URL/stored params
-const updateForm = (params) => {
-	params = new URLSearchParams(params) // Parse into params
+    // Extract unique product types
+    const uniqueProductTypes = [...new Set(data.map(item => item.Product_Type))];
 
-	params.forEach((value, key) => {
-		// Find them by their ID
-		let inputOrSelect = document.getElementById(key)
+    // Populate select options dynamically
+    const productTypeSelect = document.getElementById("product-type-select");
+    uniqueProductTypes.forEach(productType => {
+      const option = document.createElement("option");
+      option.value = productType;
+      option.textContent = productType;
+      productTypeSelect.appendChild(option);
+    });
 
-		if (inputOrSelect) {
-			// Set the actual input to the param value
-			inputOrSelect.value = value
-		} else {
-			// Radios are a bit different, find them by `name` attribute
-			document.querySelectorAll(`[name=${key}]`).forEach((element) => {
-				// Check the one matching the param value
-				if (value == element.value) element.checked = true
-			}
-		)
-		}
-	})
+	// Extract unique production years
+    const uniqueYears = [...new Set(data.map(item => item.Production_Year))];
 
-	// And a callback!
-	window.stateCallback?.()
-}
+	// Sort the production years in descending order
+    uniqueYears.sort((a, b) => b - a);
 
-// Function to save them to localStorage
-const storeParams = () => {
-	let formParams = new FormData(formElement) // Get the form data
-
-	// Loop through each key/value pair
-	formParams.forEach((value, key) => {
-		localStorage.setItem(key, value) // And save them out
-	})
-}
-
-// Function to update the URL from the form
-const updateUrlParams = () => {
-	let formParams = new FormData(formElement) // Get the form data
-	formParams = new URLSearchParams(formParams) // Make it into params
-	formParams = formParams.toString() // And then into a string
-
-	// You could also write this as:
-	// let formParams = new URLSearchParams(new FormData(formElement)).toString()
-
-	// Update the URL with the params at the end
-	window.history.replaceState(null, null, '?' + formParams)
-
-	// And also store them!
-	storeParams()
-
-	// And a callback!
-	window.stateCallback?.()
-}
-
-
-
-// First, check for query/params in the URL
-if (window.location.search) {
-	let urlParams = window.location.search // Get the query string
-
-	updateForm(urlParams) // Update the form from these
-}
-// Otherwise check for saved params in storage
-else if (localStorage.length > 0) {
-	let storedParams = Object.entries(localStorage) // Get the saved params
-
-	updateForm(storedParams) // Update the form from these
-}
-
-
-
-// Don’t actually submit (which would refresh)
-formElement.onsubmit = (event) => event.preventDefault()
-
-// Run any time the form is modified
-formElement.oninput = () => updateUrlParams()
+    // Populate select options dynamically
+    const yearSelect = document.getElementById("production-year-select");
+    uniqueYears.forEach(year => {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      yearSelect.appendChild(option);
+    });
+	
+	const metricsData = [
+		{ symbol: '🦠', type: 'Greenhouse Gas Emissions', id: 'Greenhouse_Gas_Emissions', unit: 'tCO2e' },
+		{ symbol: '☠️', type: 'Pollutants Emitted', quantity:'', unit: 'ppt' },
+		{ symbol: '💧', type: 'Water Consumption', quantity:'', unit: 'Mgal/yr' },
+		{ symbol: '⚡️', type: 'Energy Consumption', quantity:'', unit: 'GWyr' },
+		{ symbol: '🗑️', type: 'Waste Generation', quantity:'', unit: 't' },
+		{ symbol: '💸', type: 'Sales Revenue', quantity:'', unit: 'USD' }
+	  ];
+	  
+	  const chartContainer = document.querySelector('.chart-container');
+	  
+	  metricsData.forEach(metric => {
+		const metricDiv = document.createElement('div');
+		metricDiv.classList.add('metric');
+	  
+		const symbolSpan = document.createElement('div');
+		symbolSpan.textContent = metric.symbol;
+	  
+		const typeSpan = document.createElement('div');
+		typeSpan.textContent = metric.type;
+	  
+		const quantitySpan = document.createElement('div');
+		quantitySpan.textContent = metric.quantity;
+		  
+		const unitSpan = document.createElement('div');
+		unitSpan.textContent = metric.unit;
+	  
+		metricDiv.appendChild(symbolSpan);
+		metricDiv.appendChild(typeSpan);
+		metricDiv.appendChild(quantitySpan);
+		metricDiv.appendChild(unitSpan);
+	  
+		chartContainer.appendChild(metricDiv);
+	  });
+  
+	
+  })
+  .catch(error => console.error('Error fetching data:', error));
