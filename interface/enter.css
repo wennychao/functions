@@ -1,15 +1,38 @@
 body {
-    --spacing: 2em;
-
-	display: grid;
-	gap: var(--spacing);
-	margin: initial;
     font-family: Arial, sans-serif;
     background-color: black;
+    color: whitesmoke;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
-form {
-	/* background-color: whitesmoke; */
+#company-list {
+    list-style-type: none;
+}
+  
+#company-list li {
+    width: 200px;
+    padding: 14px;
+    margin: 50px; 
+    border: 1px solid whitesmoke;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer; 
+}
+  
+#company-list li:hover {
+    background-color: #4f4f4f5b; 
+}
+
+#company-list li.clicked {
+    font-weight: bold;
+    color: #d80505;
+    border: 2px solid #d80505;
+}
+
+
+
+/* form {
 	display: flex;
     flex-wrap: wrap;
     margin-left: 20px;
@@ -26,13 +49,13 @@ section {
 }
   
 label {
-    margin-right: 10px; /* Adjust as needed for spacing */
+    margin-right: 10px;
 }
 
 .chevron {
     position: absolute;
     top: 50%;
-    right: 20px; /* Adjust as needed for positioning */
+    right: 20px;
     color: whitesmoke;
 }
 
@@ -45,7 +68,7 @@ select {
     border: 2px solid #ccc;
     border-radius: 50px;
     text-transform: uppercase;
-    display: block; /* Change display property to block */
+    display: block;
 }
 
 option {
@@ -56,13 +79,13 @@ option {
     border-radius: 5px;
 }
 
-/* Style the options on hover */
+
 option:hover {
-    background-color: #333; /* Example hover color */
+    background-color: #333;
 }
-/* Additional styles for the dropdown menus */
+
 #company-select, #product-type-select, #production-year-select {
-    width: 240px; /* Adjust width as needed */
+    width: 240px;
 }
 
 .chart-container {
@@ -95,7 +118,7 @@ option:hover {
     text-transform: uppercase;
     margin-bottom: 1rem;
     font-size: 12px;
-}
+} */
   
 
 /* 
