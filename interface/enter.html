@@ -8,9 +8,17 @@
         <link href="enter.css" rel="stylesheet">
         <script defer src="main.js"></script>
         <script defer src="form-state.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
-    <body>
-        <!-- Navigation menu
+    
+    <body> 
+        <ul id="company-list"></ul>
+        <div id="filtered-data"></div>
+        <canvas id="bubble-chart"></canvas>
+    </body>
+    </html>
+
+     <!-- Navigation menu
         <header>
             <nav>
                 <ul>
@@ -21,13 +29,6 @@
                 </ul>
             </nav>
         </header> -->
-        
-        <ul id="company-list"></ul>
-        
-        <div id="filtered-data">
-            <!-- Filtered data will be displayed here -->
-        </div>
-
         <!-- <form>
             <section>
                 <div class="select-wrapper">
@@ -67,5 +68,4 @@
               <div class="title">Unit</div>
             </div>
         </div> -->
-    </body>
-    </html>
+   

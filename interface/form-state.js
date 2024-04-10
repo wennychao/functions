@@ -38,31 +38,56 @@ fetch('Plastic based Textiles in clothing industry.json')
           }
         }
 
-        // Function to display filtered data
-        function displayFilteredData(filteredData) {
-        const filteredDataContainer = document.getElementById('filtered-data');
-        filteredDataContainer.innerHTML = ''; // Clear previous content
+// Function to display filtered data as a bubble chart
+function displayFilteredData(filteredData) {
+  const bubbleChartData = filteredData.map(item => ({
+    x: parseFloat(item.Water_Consumption),
+    y: parseFloat(item.Energy_Consumption),
+    r: parseFloat(item.Greenhouse_Gas_Emissions) / 100, // Adjust the radius as needed
+    pollutants: parseFloat(item.Pollutants_Emitted), // Include Pollutants_Emitted
+    waste: parseFloat(item.Waste_Generation), // Include Waste_Generation
+    label: item.Company
+  }));
 
-        // Function to filter data based on selected company
-        function filterData(company, data) {
-        const filteredData = data.filter(item => item.Company === company);
-        displayFilteredData(filteredData);
+  const bubbleChartCanvas = document.getElementById('bubble-chart');
+
+  // Ensure the bubble chart canvas is not null
+  if (bubbleChartCanvas) {
+    new Chart(bubbleChartCanvas, {
+      type: 'bubble',
+      data: {
+        datasets: [{
+          label: 'Environmental Impact',
+          data: bubbleChartData,
+          backgroundColor: 'rgba(255, 99, 132, 0.6)', // Background color of bubbles
+          borderColor: 'rgba(255, 99, 132, 1)', // Border color of bubbles
+          borderWidth: 1 // Border width of bubbles
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Water Consumption'
+            },
+            type: 'linear',
+            position: 'bottom'
+          },
+          y: {
+            display: false // Hide the y-axis scale
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Environmental Impact Bubble Chart'
+          }
         }
-        
-        // Create and append elements to display filtered data
-        filteredData.forEach(item => {
-          const itemContainer = document.createElement('div');
-          itemContainer.innerHTML = `
-            <p><strong>Greenhouse Gas Emissions:</strong> ${item.Greenhouse_Gas_Emissions}</p>
-            <p><strong>Pollutants Emitted:</strong> ${item.Pollutants_Emitted}</p>
-            <p><strong>Water Consumption:</strong> ${item.Water_Consumption}</p>
-            <p><strong>Pollutants Emitted:</strong> ${item.Pollutants_Emitted}</p>
-            <p><strong>Energy Consumption:</strong> ${item.Energy_Consumption}</p>
-            <p><strong>Waste Generation:</strong> ${item.Waste_Generation}</p>
-          `;
-          filteredDataContainer.appendChild(itemContainer);
-        });
-      }    
+      }
+    });
+  }
+}   
 
       // Event listener to handle clicks outside the company list
         document.addEventListener('click', (event) => {

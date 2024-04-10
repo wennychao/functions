@@ -8,6 +8,7 @@ body {
 
 #company-list {
     list-style-type: none;
+    position: fixed;
 }
   
 #company-list li {
@@ -30,7 +31,12 @@ body {
     border: 2px solid #d80505;
 }
 
-
+/* #bubble-chart {
+    width: 600px;
+    height: 400px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+} */
 
 /* form {
 	display: flex;
