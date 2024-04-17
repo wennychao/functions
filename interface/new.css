@@ -1,0 +1,91 @@
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 14px;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+#companyNamesContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    padding: 20px;
+}
+
+#companyNamesContainer ul li {
+    cursor: pointer;
+}
+
+#chartContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(84, 84, 84, 0.9);
+    overflow: auto;
+    z-index: -1; /* Set z-index to a low value */
+    /* padding: 20px;
+} */ 
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  #company-list-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    overflow-y: auto;
+  }
+  
+  #company-list {
+    margin: 0;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  #chart-container {
+    position: absolute;
+    top: 0;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+  }
+  
+  #bubble-chart {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Define CSS animations */
+@keyframes bubbleAnimation {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 0.7;
+    }
+  }
+  
+  /* Apply the animation to the bubbles */
+  .bubble {
+    animation: bubbleAnimation 1s ease-in-out forwards;
+  }
+  
+  
+
