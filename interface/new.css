@@ -57,6 +57,27 @@ body {
     padding: 10px;
     cursor: pointer;
   }
+
+  #company-list li {
+    width: 180px;
+    padding: 14px;
+    margin-top: 50px; 
+    margin-left: 10px;
+    border: 1px solid whitesmoke;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer; 
+}
+  
+#company-list li:hover {
+    background-color: #4f4f4f5b; 
+}
+
+#company-list li.clicked {
+    font-weight: bold;
+    color: #d80505;
+    border: 2px solid #d80505;
+}
   
   #chart-container {
     position: absolute;
@@ -71,21 +92,37 @@ body {
     height: 100%;
   }
   
-  /* Define CSS animations */
-@keyframes bubbleAnimation {
+  @keyframes bubbleAnimation {
     0% {
-      transform: translateY(100%);
+        transform: translateY(100vh); /* Start from bottom of viewport */
+        opacity: 0.3;
     }
     100% {
-      transform: translateY(0);
-      opacity: 0.7;
+        transform: translateY(-1000px); /* Move to top and rotate */
+        opacity: 0.7;
     }
-  }
+}
   
-  /* Apply the animation to the bubbles */
-  .bubble {
-    animation: bubbleAnimation 1s ease-in-out forwards;
-  }
-  
-  
+/* Define CSS animations */
+@keyframes bubbleAnimation {
+    0% {
+        transform: translateY(100vh);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-1000px);
+        opacity: 0.7;
+    }
+}
+
+/* Apply the animation to the bubbles */
+.bubble {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    animation: bubbleAnimation 25s linear infinite;
+}
 

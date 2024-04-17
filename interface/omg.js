@@ -1,5 +1,8 @@
 // Load the JSON data from the file
 d3.json("Plastic based Textiles in clothing industry.json").then(function(data) {
+
+    // Filter the data to include only entries from the year 2022
+    data = data.filter(entry => entry.Production_Year === "2022");
     
     // Set up SVG dimensions
     const width = window.innerWidth - 200; // Adjust for company list width
@@ -44,6 +47,8 @@ d3.json("Plastic based Textiles in clothing industry.json").then(function(data) 
                 y: Math.random() * (height - 100) + 50, // Random y position within the SVG height
                 radius: sizeScale(+d[metric]), // Bubble radius based on data
                 color: color(i), // Bubble color based on metric
+                delay: Math.random() * 10000,
+                speed: Math.random() * 2000 + 500,
             }));
 
             svg.selectAll(".bubble-" + metric).remove(); // Remove existing bubbles before updating
@@ -57,7 +62,8 @@ d3.json("Plastic based Textiles in clothing industry.json").then(function(data) 
                 .attr("cy", d => d.y)
                 .attr("r", d => d.radius)
                 .attr("fill", d => d.color)
-                .attr("opacity", 0.7);
+                .attr("opacity", 0.7)
+                .attr("cy", d => d.delay); 
         });
     }
 
@@ -76,6 +82,42 @@ d3.json("Plastic based Textiles in clothing industry.json").then(function(data) 
         companyList.appendChild(listItem);
     });
 
-    // Initialize chart with all companies selected
-    updateChart("All");
+    // Define the color scale for metrics
+    const color = d3.scaleOrdinal(d3.schemeTableau10).domain(metrics);
+
+    // Function to draw or update the legend
+    function drawLegend() {
+    // Create the legend at the bottom-left
+    const legend = svg.selectAll(".legend")
+    .data(color.domain())
+    .enter()
+    .append("g")
+    .attr("class", "legend")
+    .attr("transform", (d, i) => `translate(20, ${height - (20 * (i + 1))})`); // Position at the bottom-left
+
+
+   // Add colored rectangles to the legend
+   legend.append("rect")
+   .attr("x", 0) // Positioned at the starting point of the group
+   .attr("width", 18)
+   .attr("height", 18)
+   .style("fill", color);
+
+     // Add text labels to the legend
+    legend.append("text")
+        .attr("x", 24) // Positioned to the right of the rectangle
+        .attr("y", 9)
+        .attr("dy", ".35em")
+        .style("text-anchor", "start")
+        .style("fill", "white") // Set the text color to white
+        .text(d => d);
+}
+
+// Call this function to initially draw the legend
+drawLegend();
+
+
+     // Initialize chart with all companies selected
+     updateChart("All");
+
 });
