@@ -1,64 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Imbue:opsz,wght@10..100,100..900&family=Oranienbaum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Big+Shoulders+Text:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway+Dots&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Rubik+Distressed&family=Rubik+Glitch&family=Rubik+Microbe&family=Rubik+Wet+Paint&display=swap');
 
-body {
+*{
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Red Hat Display", sans-serif;
+    color: #0d0d0d;
+    font-weight: 400;
+}
+
+body {
     text-align: center;
-    background-color: #121613;
+    height: 100%; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Set the height of the body to viewport height */
-    background-image: url('f7.jpeg');
-    background-size: cover; /* Cover the entire container */
-    background-position:0% 60%; /* Center the background image */
-    background-repeat: no-repeat;
+    height: 100vh; 
+    background-color: #A60C0C;
+    text-transform: uppercase;
+    padding: 20px 0;
 }
 
-header {
-    padding: 20px 0;
-    text-transform: uppercase;
+#title-container {
+    margin-top: -2rem;
+    margin-bottom: 6rem;
 }
 
 h1 {
-    font-family: "Imbue", serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-size: 10rem;
-    margin-top: 2rem;
-    color: #d80505;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.211);
+    margin: 0;
+    left: 0;
+    right: 0;
+    margin-top: -2rem;
+    font-weight: 700;
+    font-size: 5.5rem;
 }
 
 h2 {
     width: 700px;
     margin: auto;
-    font-weight: 400;
-    color: whitesmoke;
+    margin-top: 1.5rem;
+}
+
+a {
+    font-weight: 600;
 }
 
 .enter-button {
-    padding: 16px 24px;
-    color: whitesmoke;
-    border: 2px solid whitesmoke;
+    position: relative;
+    padding: 12px 24px;
+    border: 2.5px solid #0d0d0d;
     border-radius: 100px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-transform: uppercase;
-    margin-top: 2rem;
-    text-decoration: none; /* Remove underline for anchor links */
-    display: inline-block; /* Ensure button is displayed inline */
+    transition: 0.3s ease;
+    margin-top: 3rem;
+    display: inline-block;
 }
 
 .enter-button:hover {
-    background-color: #cd0000;
-    color: #ffffff;
-    box-shadow: 4px 4px 4px black;
-}
-
+    background-color: #0d0d0d;
+    color: whitesmoke;
+}  
 
 footer {
     color: #a1a1a1;
