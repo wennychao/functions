@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Big+Shoulders+Text:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway+Dots&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Rubik+Distressed&family=Rubik+Glitch&family=Rubik+Microbe&family=Rubik+Wet+Paint&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Big+Shoulders+Text:wght@100..900&family=Nosifer&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway+Dots&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Rubik+Distressed&family=Rubik+Glitch&family=Rubik+Microbe&family=Rubik+Wet+Paint&display=swap');
 
 *{
     margin: 0;
@@ -61,6 +61,28 @@ a {
     background-color: #0d0d0d;
     color: whitesmoke;
 }  
+
+.reveal-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('burn.jpg'); /* Make sure the image path is correct */
+    background-size: cover;
+    background-position: center;
+    mask-image: linear-gradient(to top, transparent, black 100%); /* Starts with transparent to black gradient */
+    mask-size: 100% 300%; /* Extend the size of the mask to create a smoother transition */
+    mask-position: bottom; /* Start with the mask at the bottom */
+    transition: mask-position 2s ease; /* Smooth transition for the mask position */
+    pointer-events: none; /* Prevents the image from interfering with button clicks */
+    z-index: -1; /* Keeps the image behind the content */
+}
+
+.enter-button:hover + .reveal-image {
+    mask-position: top; /* Moves the mask to the top, revealing the image */
+}
+
 
 footer {
     color: #a1a1a1;
