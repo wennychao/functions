@@ -58,8 +58,8 @@ a {
 }
 
 .enter-button:hover {
-    background-color: #0d0d0d;
-    color: whitesmoke;
+    color: #A60C0C;
+    border: 2.5px solid #A60C0C;
 }  
 
 .reveal-image {
@@ -81,6 +81,10 @@ a {
 
 .enter-button:hover + .reveal-image {
     mask-position: top; /* Moves the mask to the top, revealing the image */
+}
+
+header h1, header h2, footer p {
+    transition: mix-blend-mode 0.3s ease; /* Smooth transitions for color and blend mode */
 }
 
 
