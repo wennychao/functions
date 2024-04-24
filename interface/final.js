@@ -36,7 +36,7 @@ fetch('Plastic based Textiles in clothing industry.json')
       .size([width, height])
       .padding(3);
 
-    const colorPalette = {
+      const colorPalette = {
         'Viscose': '#ffad66',
         'Linen': '#ff9966',
         'Synthetic_Blend': '#ff7f50',
@@ -44,9 +44,9 @@ fetch('Plastic based Textiles in clothing industry.json')
         'Tencel': '#ff5733',
         'Nylon': '#ff4500',
         'Polyester': '#ff3300',
-        'Organic_Cotton': '#E61F00',
-        'Microfiber': '#B10B00'
-    };
+        'Organic_Cotton': '#cc0000', // Darker shade of red
+        'Microfiber': '#990000'       // Even darker shade of red
+    };    
 
     let focus;
     const selectedCompanies = {};
@@ -71,7 +71,15 @@ fetch('Plastic based Textiles in clothing industry.json')
                 d3.select(this).append('title')
                     .text(d => `${d.data.company} - ${d.data.productType.replace(/_/g, ' ')}: $${d.data.revenue.toLocaleString()}`);
               })
-              .on("click", (event, d) => { if (focus !== d) { zoom(event, d); event.stopPropagation(); } }),
+              .on("click", (event, d) => { 
+                if (focus !== d) { 
+                  zoom(event, d); 
+                  event.stopPropagation(); 
+                } else { // If already focused, zoom out
+                  zoom(event, root);
+                  event.stopPropagation();
+                }
+              }),
             update => update
               .transition().duration(500)
               .attr('cx', d => d.x)
@@ -104,43 +112,52 @@ fetch('Plastic based Textiles in clothing industry.json')
     }
 
     function zoom(event, d) {
+        if (focus === d) { // If already focused, zoom out
+            focus = null; // Reset focus
+            svg.selectAll('.env-metrics').remove(); // Remove environmental metrics group
+            zoomTo(root);
+            event.stopPropagation();
+            return;
+        }
+    
         focus = d;
         zoomTo(d);
     
         // Setup the environment pack layout
-    const envPack = d3.pack()
-    .size([d.r * 2, d.r * 2]) // Make the size relative to the radius of the zoomed bubble
-    .padding(1);
-
-    // Data join for environmental metrics
-    const envRoot = d3.hierarchy({children: d.data.metrics})
-        .sum(d => d.value); // Use value for calculating the radius
-
-    const envNodes = envPack(envRoot).leaves();
-
-    // Environment metrics group
-    const envGroup = svg.append('g')
-        .attr('class', 'env-metrics')
-        .attr('transform', `translate(${d.x - d.r}, ${d.y - d.r})`); // Center the group within the parent bubble
-
-    // Append environmental metric bubbles
-    envGroup.selectAll('circle.env-metric')
-        .data(envNodes)
-        .enter()
-        .append('circle')
-        .attr('class', 'env-metric')
-        .attr('cx', d => d.x)
-        .attr('cy', d => d.y)
-        .attr('r', d => d.r)
-        .attr('fill', (d, i) => ['#76FF03', '#FF1744', '#00E5FF', '#FFEA00', '#1DE9B6'][i % 5])
-        .attr("opacity", 0.7)
-        .append('title')
-        .text(d => `${d.data.name}: ${d.data.value.toLocaleString()}`);
-
-    // Scale and translate to focus on the environmental metrics
-    zoomToEnvironmentalMetrics(d.x, d.y, d.r);
-        }
-
+        const envPack = d3.pack()
+            .size([d.r * 2, d.r * 2]) // Make the size relative to the radius of the zoomed bubble
+            .padding(1);
+    
+        // Data join for environmental metrics
+        const envRoot = d3.hierarchy({ children: d.data.metrics })
+            .sum(d => d.value); // Use value for calculating the radius
+    
+        const envNodes = envPack(envRoot).leaves();
+    
+        let envGroup = svg.select('.env-metrics');
+        if (!envGroup.empty()) envGroup.remove(); // Remove existing environmental metrics group
+        envGroup = svg.append('g')
+            .attr('class', 'env-metrics')
+            .attr('transform', `translate(${d.x - d.r}, ${d.y - d.r})`);
+    
+        // Append environmental metric bubbles
+        envGroup.selectAll('circle.env-metric')
+            .data(envNodes)
+            .enter()
+            .append('circle')
+            .attr('class', 'env-metric')
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y)
+            .attr('r', d => d.r)
+            .attr('fill', (d, i) => ['#76FF03', '#FF1744', '#00E5FF', '#FFEA00', '#1DE9B6'][i % 5])
+            .attr("opacity", 0.5)
+            .append('title')
+            .text(d => `${d.data.name}: ${d.data.value.toLocaleString()}`);
+    
+        // Scale and translate to focus on the environmental metrics
+        zoomToEnvironmentalMetrics(d.x, d.y, d.r);
+    }
+    
     function zoomToEnvironmentalMetrics(x, y, radius) {
         const scale = 6; // Increased scale factor for larger zoom
         const translate = [width / 2 - scale * x, height / 2 - scale * y];
