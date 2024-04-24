@@ -108,15 +108,22 @@ ul {
     }
 
     .wrapper {
-        display: block; /* change grid to block layout */
-        height: auto;
+        display: grid; /* revert to grid layout */
+        height: 100%; /* occupy full height */
+        grid-template-rows: auto 1fr auto; /* adjust rows */
+        grid-template-areas: 
+            "header"
+            "content"
+            "footer";
     }
 
-    aside, #chart-container {
-        width: 100%; /* full width for small screens */
+    #company-list {
+        grid-area: header;
+        padding: 10px; /* smaller padding */
     }
 
-    #company-list, #product_type_legend {
+    #product_type_legend {
+        grid-area: footer;
         padding: 10px; /* smaller padding */
     }
 }

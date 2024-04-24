@@ -99,3 +99,47 @@ footer {
 footer p {
     margin: 0;
 }
+
+/* iPhone Size (standard sizes like iPhone X, XR, etc.) */
+@media only screen and (max-width: 375px) {
+    h1 {
+        font-size: 3rem; 
+        font-weight: 500;
+    }
+
+    h2 {
+        width: 90%; /* adjust width to fit smaller screens */
+        font-size: 1rem; /* smaller font size for readability */
+    }
+
+    .enter-button {
+        padding: 10px 20px; /* adjust padding */
+        font-size: 1rem; /* smaller font size for buttons */
+    }
+
+    footer p {
+        font-size: 0.8rem; /* smaller font size for footer */
+    }
+}
+
+/* iPad Size (specifically targeting devices like iPad and iPad Pro) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    h1 {
+        font-size: 4.5rem;
+        font-weight: 500;
+    }
+
+    h2 {
+        width: 80%; /* adjust width to better use available space */
+        font-size: 1.2rem; /* slightly larger font size */
+    }
+
+    .enter-button {
+        padding: 14px 28px; /* larger padding */
+        font-size: 1.2rem; /* larger font size */
+    }
+
+    footer p {
+        font-size: 1rem; /* adjust footer text size */
+    }
+}
