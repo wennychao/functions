@@ -106,6 +106,47 @@ fetch('Plastic based Textiles in clothing industry.json')
     function zoom(event, d) {
         focus = d;
         zoomTo(d);
+    
+        // Setup the environment pack layout
+    const envPack = d3.pack()
+    .size([d.r * 2, d.r * 2]) // Make the size relative to the radius of the zoomed bubble
+    .padding(1);
+
+    // Data join for environmental metrics
+    const envRoot = d3.hierarchy({children: d.data.metrics})
+        .sum(d => d.value); // Use value for calculating the radius
+
+    const envNodes = envPack(envRoot).leaves();
+
+    // Environment metrics group
+    const envGroup = svg.append('g')
+        .attr('class', 'env-metrics')
+        .attr('transform', `translate(${d.x - d.r}, ${d.y - d.r})`); // Center the group within the parent bubble
+
+    // Append environmental metric bubbles
+    envGroup.selectAll('circle.env-metric')
+        .data(envNodes)
+        .enter()
+        .append('circle')
+        .attr('class', 'env-metric')
+        .attr('cx', d => d.x)
+        .attr('cy', d => d.y)
+        .attr('r', d => d.r)
+        .attr('fill', (d, i) => ['#76FF03', '#FF1744', '#00E5FF', '#FFEA00', '#1DE9B6'][i % 5])
+        .attr("opacity", 0.7)
+        .append('title')
+        .text(d => `${d.data.name}: ${d.data.value.toLocaleString()}`);
+
+    // Scale and translate to focus on the environmental metrics
+    zoomToEnvironmentalMetrics(d.x, d.y, d.r);
+        }
+
+    function zoomToEnvironmentalMetrics(x, y, radius) {
+        const scale = 6; // Increased scale factor for larger zoom
+        const translate = [width / 2 - scale * x, height / 2 - scale * y];
+    
+        svg.transition().duration(750)
+            .attr("transform", `translate(${translate})scale(${scale})`);
     }
 
     updateChart(); // Initialize the chart with all data
