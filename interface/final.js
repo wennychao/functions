@@ -141,18 +141,34 @@ fetch('Plastic based Textiles in clothing industry.json')
             .attr('transform', `translate(${d.x - d.r}, ${d.y - d.r})`);
     
         // Append environmental metric bubbles
-        envGroup.selectAll('circle.env-metric')
-            .data(envNodes)
-            .enter()
-            .append('circle')
-            .attr('class', 'env-metric')
-            .attr('cx', d => d.x)
-            .attr('cy', d => d.y)
-            .attr('r', d => d.r)
-            .attr('fill', (d, i) => ['#76FF03', '#FF1744', '#00E5FF', '#FFEA00', '#1DE9B6'][i % 5])
-            .attr("opacity", 0.5)
-            .append('title')
-            .text(d => `${d.data.name}: ${d.data.value.toLocaleString()}`);
+envGroup.selectAll('circle.env-metric')
+.data(envNodes)
+.enter()
+.append('circle')
+.attr('class', 'env-metric')
+.attr('cx', d => d.x)
+.attr('cy', d => d.y)
+.attr('r', d => d.r)
+.attr('fill', (d, i) => ['#354E00', '#3E5314', '#424A00', '#354E00', '#3E5314'][i % 5])
+.attr("opacity", 1)
+.append('title')
+.text(d => `${d.data.name}: ${d.data.value.toLocaleString()}`);
+
+// Append text labels to environmental metric bubbles
+envGroup.selectAll('text.env-label')
+.data(envNodes)
+.enter()
+.append('text')
+.attr('class', 'env-label')
+.attr('x', d => d.x)
+.attr('y', d => d.y)
+.attr('text-anchor', 'middle')
+.attr('dy', '0.1em')
+.style('fill', 'white')
+.style('font-size', '2px')
+.style('margin-top', '2px')
+.text(d => d.data.name);
+
     
         // Scale and translate to focus on the environmental metrics
         zoomToEnvironmentalMetrics(d.x, d.y, d.r);
