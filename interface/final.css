@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Big+Shoulders+Text:wght@100..900&family=Nosifer&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway+Dots&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Rubik+Distressed&family=Rubik+Glitch&family=Rubik+Microbe&family=Rubik+Wet+Paint&display=swap');
+
+body {
+    font-family: Poppins, sans-serif;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.wrapper {
+    display: grid;
+    margin: 20px;
+    border: solid 2px #a60000;
+    grid-template-rows: auto;
+    height: 94vh;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: 
+        "sidebar content";
+}
+
+aside {
+    grid-area: sidebar;
+    border-right: solid 2px #a60000;
+    height: 93.7vh;
+}
+
+#company-list {
+    padding: 20px;
+    height: 42vh;
+    border-bottom: solid 2px #a60000;
+    margin: 0;
+}
+
+#product_type_legend {
+    padding: 20px;
+}
+
+#chart-container {
+    grid-area: content;
+    width: 100%;
+    height: auto;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0; 
+    margin-bottom: 0;
+}
+
+#company-list li {
+    margin-bottom: 18px;
+    text-align: center;
+    cursor: pointer; 
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid whitesmoke;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, font-weight 0.3s ease, text-shadow 0.3s ease;
+}
+
+#company-list li:hover {
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background-color: #A60C0C;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.231);
+  }
+
+#product_type_legend {
+    padding: 20px;
+    font-size: 12px;
+}
+
+.legend-circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-top: 2px;
+    margin-right: 10px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.legend-item {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.selected {
+    background-color: #f0f0f0; /* Light grey background for selected company */
+    color: black; /* Black text for better visibility */
+    font-weight: 600; /* Make the font bold */
+}
+
+
