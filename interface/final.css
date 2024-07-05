@@ -26,12 +26,14 @@ body {
 aside {
     grid-area: sidebar;
     border-right: solid 2px #a60000;
-    height: 93.7vh;
+    height: 93.999vh;
 }
 
 #company-list {
     padding: 20px;
-    height: 42vh;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 38vh;
     border-bottom: solid 2px #a60000;
     margin: 0;
 }
@@ -43,7 +45,21 @@ aside {
 #chart-container {
     grid-area: content;
     width: 100%;
-    height: auto;
+    height: 93.999vh;
+    background-image: url(/burn-2.png);
+    background-size: cover;
+    background-position: center;
+}
+
+#chart-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(50px);
 }
 
 ul {
@@ -54,25 +70,25 @@ ul {
 }
 
 #company-list li {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     text-align: center;
     cursor: pointer; 
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border: 1px solid whitesmoke;
-    border-radius: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-color: rgba(57, 57, 57, 0.401);
     transition: background-color 0.3s ease, font-weight 0.3s ease, text-shadow 0.3s ease;
 }
 
 #company-list li:hover {
-    border: 1px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
     background-color: #A60C0C;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.231);
   }
 
 #product_type_legend {
-    padding: 20px;
+    padding: 10px;
+    padding-left: 24px;
     font-size: 12px;
 }
 
@@ -88,18 +104,16 @@ ul {
 }
 
 .legend-item {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .selected {
-    background-color: #f0f0f0; /* Light grey background for selected company */
-    color: black; /* Black text for better visibility */
-    font-weight: 600; /* Make the font bold */
+    background-color: #f0f0f0 !important; 
+    color: black; 
+    font-weight: 600;
 }
 
-
-/* Media Queries */
 
 /* iPhone Size */
 @media only screen and (max-width: 375px) {
@@ -126,6 +140,10 @@ ul {
         grid-area: footer;
         padding: 10px; /* smaller padding */
     }
+
+    #chart-container {
+        background-image: url(/burn-3.png);
+    }
 }
 
 /* iPad Size */
@@ -136,6 +154,10 @@ ul {
 
     .wrapper {
         grid-template-columns: 1fr 3fr; /* adjust column sizing for more space */
+    }
+
+    #chart-container {
+        background-image: url(/burn-3.png);
     }
 
     aside {

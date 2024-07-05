@@ -32,7 +32,7 @@ h1 {
     right: 0;
     margin-top: -2rem;
     font-weight: 500;
-    font-size: 5.5rem;
+    font-size: 5rem;
 }
 
 h2 {
@@ -68,25 +68,24 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('burn.jpg'); /* Make sure the image path is correct */
+    background-image: url('burn.jpg'); 
     background-size: cover;
     background-position: center;
-    mask-image: linear-gradient(to top, transparent, black 100%); /* Starts with transparent to black gradient */
-    mask-size: 100% 300%; /* Extend the size of the mask to create a smoother transition */
-    mask-position: bottom; /* Start with the mask at the bottom */
-    transition: mask-position 2s ease; /* Smooth transition for the mask position */
-    pointer-events: none; /* Prevents the image from interfering with button clicks */
-    z-index: -1; /* Keeps the image behind the content */
+    mask-image: linear-gradient(to top, transparent, black 100%); 
+    mask-size: 100% 300%; 
+    mask-position: bottom;
+    transition: mask-position 2s ease; 
+    pointer-events: none; 
+    z-index: -1; 
 }
 
 .enter-button:hover + .reveal-image {
-    mask-position: top; /* Moves the mask to the top, revealing the image */
+    mask-position: top; 
 }
 
 header h1, header h2, footer p {
-    transition: mix-blend-mode 0.3s ease; /* Smooth transitions for color and blend mode */
+    transition: mix-blend-mode 0.3s ease; 
 }
-
 
 footer {
     color: #a1a1a1;
@@ -100,46 +99,147 @@ footer p {
     margin: 0;
 }
 
-/* iPhone Size (standard sizes like iPhone X, XR, etc.) */
-@media only screen and (max-width: 375px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+    header {
+        margin-top: -5rem;
+    }
+
+    h1 {
+        font-size: 4.8rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+    }
+
+    footer p {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 470px) and (max-width: 768px){
+    header {
+        margin-top: -4rem;
+    }
+
+    h1 {
+        font-size: 4rem; 
+        font-weight: 500;
+    }
+
+    h2 {
+        width: 80%;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 470px) {
+    header {
+        margin-top: -4rem;
+    }
+
     h1 {
         font-size: 3rem; 
         font-weight: 500;
     }
 
     h2 {
-        width: 90%; /* adjust width to fit smaller screens */
-        font-size: 1rem; /* smaller font size for readability */
-    }
-
-    .enter-button {
-        padding: 10px 20px; /* adjust padding */
-        font-size: 1rem; /* smaller font size for buttons */
+        width: 80%;
+        font-size: 0.8rem;
     }
 
     footer p {
-        font-size: 0.8rem; /* smaller font size for footer */
+        font-size: 0.8rem;
     }
 }
 
-/* iPad Size (specifically targeting devices like iPad and iPad Pro) */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+/* 
+@media (min-width: 600px) and (max-width: 1024px) {
+    header {
+        margin-top: -9rem;
+    }
+
     h1 {
         font-size: 4.5rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+    }
+
+    h2 {
+        width: 80%;
+    }
+
+    @keyframes changeButton {
+        0% {
+            color: #0d0d0d; 
+            border-color: #0d0d0d; 
+        }
+        100% {
+            color:  #A60C0C;
+            border-color:  #A60C0C;
+        }
+    }
+
+    .enter-button {
+        padding: 14px 28px; 
+        margin-top: 2rem;
+        transition: 3s ease;
+        backdrop-filter: (10px);
+        animation: changeButton 1s ease-in 0.3s forwards;
+    }
+
+     header h1, header h2, footer p {
+        transition-delay: 3s;
+    }
+
+    footer p {
+        font-size: 1rem;
+    }
+} 
+
+@media (max-width: 600px) {
+    header {
+        margin-top: -8rem;
+    }
+    h1 {
+        font-size: 3.2rem; 
+        font-weight: 500;
+        margin-top: -5rem;
+        margin-bottom: 1rem;
         font-weight: 500;
     }
 
     h2 {
-        width: 80%; /* adjust width to better use available space */
-        font-size: 1.2rem; /* slightly larger font size */
+        width: 70%;
+    }
+
+    @keyframes changeButton {
+        0% {
+            color: #0d0d0d; 
+            border-color: #0d0d0d; 
+        }
+        100% {
+            color:  #A60C0C;
+            border-color:  #A60C0C;
+        }
     }
 
     .enter-button {
-        padding: 14px 28px; /* larger padding */
-        font-size: 1.2rem; /* larger font size */
+        padding: 10px 20px; 
+        transition: 3s ease;
+        backdrop-filter: (10px);
+        margin-top: 2.2rem;
+        animation: changeButton 1s ease-in 0.5s forwards;
+        }
+
+    header h1, header h2, footer p {
+        transition-delay: 3s;
     }
 
     footer p {
-        font-size: 1rem; /* adjust footer text size */
+        font-size: 0.8rem; 
     }
 }
+
+*/

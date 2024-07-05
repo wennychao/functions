@@ -7,11 +7,11 @@ fetch('Plastic based Textiles in clothing industry.json')
         v => ({
           revenue: d3.sum(v, leaf => +leaf.Sales_Revenue),
           metrics: [
-            {name: "Greenhouse Gas Emissions", value: d3.sum(v, leaf => +leaf.Greenhouse_Gas_Emissions)},
-            {name: "Pollutants Emitted", value: d3.sum(v, leaf => +leaf.Pollutants_Emitted)},
-            {name: "Water Consumption", value: d3.sum(v, leaf => +leaf.Water_Consumption)},
-            {name: "Energy Consumption", value: d3.sum(v, leaf => +leaf.Energy_Consumption)},
-            {name: "Waste Generation", value: d3.sum(v, leaf => +leaf.Waste_Generation)}
+            {name: "Greenhouse Gas Emissions", value: d3.sum(v, leaf => +leaf.Greenhouse_Gas_Emissions), unit: 'tCO2e'},
+            {name: "Pollutants Emitted", value: d3.sum(v, leaf => +leaf.Pollutants_Emitted), unit: 'ppm'},
+            {name: "Water Consumption", value: d3.sum(v, leaf => +leaf.Water_Consumption), unit: 'm³'},
+            {name: "Energy Consumption", value: d3.sum(v, leaf => +leaf.Energy_Consumption), unit: 'MWh'},
+            {name: "Waste Generation", value: d3.sum(v, leaf => +leaf.Waste_Generation), unit: 'mt'}
           ]
         }),
         d => d.Company, d => d.Product_Type)
@@ -37,15 +37,17 @@ fetch('Plastic based Textiles in clothing industry.json')
       .padding(3);
 
       const colorPalette = {
-        'Viscose': '#ffad66',
-        'Linen': '#ff9966',
-        'Synthetic_Blend': '#ff7f50',
-        'Wool': '#ff6347',
-        'Tencel': '#ff5733',
-        'Nylon': '#ff4500',
-        'Polyester': '#ff3300',
-        'Organic_Cotton': '#cc0000', // Darker shade of red
-        'Microfiber': '#990000'       // Even darker shade of red
+        'Linen': '#f49405',
+        'Wool': '#f0f921',
+        'Nylon': '#fcffa4',
+        'Cotton': '#fedd56', 
+        'Tencel': '#fbaf40',
+        'Viscose': '#f38748',
+        'Polyester': '#df6951',
+        'Microfiber': '#c7475e', 
+        'Recycled_Poly': '#a52c60',
+        'Synthetic_Blend': '#852676',
+        'Organic_Cotton': '#31137B', 
     };    
 
     let focus;
@@ -60,13 +62,16 @@ fetch('Plastic based Textiles in clothing industry.json')
         const node = svg.selectAll('circle')
           .data(bubbles, d => d.data.company + d.data.productType);
 
+          console.log(aggregatedData)
+
         node.join(
             enter => enter.append('circle')
               .attr('cx', d => d.x)
               .attr('cy', d => d.y)
               .attr('r', d => d.r)
-              .attr('fill', d => colorPalette[d.data.productType] || '#ffad66')
-              .attr("opacity", 0.7)
+              .attr('fill', d => colorPalette[d.data.productType])
+              .style('cursor', 'pointer')
+              .attr("opacity", 1)
               .each(function(d) { // Use 'each' to append title to each circle
                 d3.select(this).append('title')
                     .text(d => `${d.data.company} - ${d.data.productType.replace(/_/g, ' ')}: $${d.data.revenue.toLocaleString()}`);
@@ -141,35 +146,34 @@ fetch('Plastic based Textiles in clothing industry.json')
             .attr('transform', `translate(${d.x - d.r}, ${d.y - d.r})`);
     
         // Append environmental metric bubbles
-envGroup.selectAll('circle.env-metric')
-.data(envNodes)
-.enter()
-.append('circle')
-.attr('class', 'env-metric')
-.attr('cx', d => d.x)
-.attr('cy', d => d.y)
-.attr('r', d => d.r)
-.attr('fill', (d, i) => ['#354E00', '#3E5314', '#424A00', '#354E00', '#3E5314'][i % 5])
-.attr("opacity", 1)
-.append('title')
-.text(d => `${d.data.name}: ${d.data.value.toLocaleString()}`);
+        envGroup.selectAll('circle.env-metric')
+        .data(envNodes)
+        .enter()
+        .append('circle')
+        .attr('class', 'env-metric')
+        .attr('cx', d => d.x)
+        .attr('cy', d => d.y)
+        .attr('r', d => d.r)
+        .attr('fill', (d, i) => ['#2E4400', '#294300', '#243600', '#1F2A00', '#1A1D00',][i % 5])
+        .style('cursor', 'pointer')
+        .attr("opacity", 1)
+        .append('title')
+        .text(d => `${d.data.name}: ${d.data.value.toLocaleString()} ${d.data.unit}`);
 
-// Append text labels to environmental metric bubbles
-envGroup.selectAll('text.env-label')
-.data(envNodes)
-.enter()
-.append('text')
-.attr('class', 'env-label')
-.attr('x', d => d.x)
-.attr('y', d => d.y)
-.attr('text-anchor', 'middle')
-.attr('dy', '0.1em')
-.style('fill', 'white')
-.style('font-size', '2px')
-.style('margin-top', '2px')
-.text(d => d.data.name);
-
-    
+        // Append text labels to environmental metric bubbles
+        envGroup.selectAll('text.env-label')
+        .data(envNodes)
+        .enter()
+        .append('text')
+        .attr('class', 'env-label')
+        .attr('x', d => d.x)
+        .attr('y', d => d.y + d.r * 0.5)
+        .attr('text-anchor', 'middle')
+        .attr('dy', '0.1em')
+        .style('fill', 'white')
+        .style('font-size', '2px')
+        .style('margin-top', '2px');
+        // .text(d => d.data.name);
         // Scale and translate to focus on the environmental metrics
         zoomToEnvironmentalMetrics(d.x, d.y, d.r);
     }
@@ -179,7 +183,23 @@ envGroup.selectAll('text.env-label')
         const translate = [width / 2 - scale * x, height / 2 - scale * y];
     
         svg.transition().duration(750)
-            .attr("transform", `translate(${translate})scale(${scale})`);
+            .attr("transform", `translate(${translate})scale(${scale})`)
+
+
+    function resetZoom() {
+      svg.transition().duration(750)
+          .attr("transform", "");  // Reset transformation applied to the SVG
+  }
+        svg.on("click", function() {
+              resetZoom();
+          });
+
+    function removeMetricBubbles() {
+      const envMetricsGroup = svg.selectAll(".env-metrics");  // Select the group containing the metric bubbles
+      if (!envMetricsGroup.empty()) {
+          envMetricsGroup.remove();  // Remove the group if it exists
+      }
+  }
     }
 
     updateChart(); // Initialize the chart with all data
