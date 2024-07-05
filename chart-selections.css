@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Big+Shoulders+Text:wght@100..900&family=Nosifer&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway+Dots&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Rubik+Distressed&family=Rubik+Glitch&family=Rubik+Microbe&family=Rubik+Wet+Paint&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    color: #0d0d0d;
+    font-weight: 400;
+}
+
+body {
+    text-align: center;
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #A60C0C;
+    text-transform: uppercase;
+    padding: 20px 0;
+}
+
+#title-container {
+    margin-top: -2rem;
+    margin-bottom: 6rem;
+}
+
+h1 {
+    margin: 0;
+    left: 0;
+    right: 0;
+    margin-top: -2rem;
+    font-weight: 500;
+    font-size: 5rem;
+}
+
+h2 {
+    width: 700px;
+    margin: auto;
+    margin-top: 1.5rem;
+}
+
+a {
+    font-weight: 600;
+}
+
+.enter-button {
+    position: relative;
+    padding: 12px 24px;
+    border: 2.5px solid #0d0d0d;
+    border-radius: 100px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 3rem;
+    display: inline-block;
+}
+
+.enter-button:hover {
+    color: #ffffff;
+    border: 2.5px solid #ffffff;
+}  
+
+header h1, header h2, footer p {
+    transition: mix-blend-mode 0.3s ease; 
+}
+
+footer {
+    color: #a1a1a1;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    header {
+        margin-top: -5rem;
+    }
+
+    h1 {
+        font-size: 4.8rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+    }
+
+    footer p {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 470px) and (max-width: 768px){
+    header {
+        margin-top: -4rem;
+    }
+
+    h1 {
+        font-size: 4rem; 
+        font-weight: 500;
+    }
+
+    h2 {
+        width: 80%;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 470px) {
+    header {
+        margin-top: -4rem;
+    }
+
+    h1 {
+        font-size: 3rem; 
+        font-weight: 500;
+    }
+
+    h2 {
+        width: 80%;
+        font-size: 0.8rem;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+}
