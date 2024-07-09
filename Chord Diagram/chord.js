@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch("/Plastic based Textiles in clothing industry.json")
+    fetch("../Plastic based Textiles in clothing industry.json")
     .then(response => response.json())
     .then(data => {
 
