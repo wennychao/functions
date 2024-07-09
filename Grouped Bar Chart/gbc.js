@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Create a legend
         const legend = svg.append("g")
         .attr("class", "legend")
-        .attr("transform", `translate(${width - marginRight - 100}, ${marginTop})`);
+        .attr("transform", `translate(${width - marginRight - 120}, ${marginTop})`);
 
     const legendItems = legend.selectAll(".legend-item")
         .data(color.domain())
